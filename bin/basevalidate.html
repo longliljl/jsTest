@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>basevalidate test</title>
+    <script type="text/javascript" src="basevalidate.js"></script>
+    <script>
+
+        var Person = function(){
+            this.name = 'stone';
+            this.age = 30;
+        }
+
+        var person = new Person();
+        var nums = [123, 456, 789];
+
+        // 14个独立检测方法
+        console.log(baseValidate.isString(null));
+        console.log(baseValidate.isNumber(null));
+        console.log(baseValidate.isBoolean(null));
+        console.log(baseValidate.isUndefined(null));
+        console.log(baseValidate.isNull(null));
+        console.log(baseValidate.isObject(null));
+        console.log(baseValidate.instanceOf(null));
+        console.log(baseValidate.isFunction(null));
+        console.log(baseValidate.isArray(null));
+        console.log(baseValidate.isProperty(null));
+        console.log(baseValidate.isOwnProperty(null));
+        console.log(baseValidate.isDomProperty(null));
+        console.log(baseValidate.isBomProperty(null));
+        console.log(baseValidate.isEmpty(null));
+
+        // 1个综合检测方法 baseValidate(value, object)，等价于 baseValidate.validateAll(value ,object)
+        console.log(baseValidate('123'));
+        console.log(baseValidate(123));
+        console.log(baseValidate(true));
+        console.log(baseValidate(person, Person));
+        console.log(baseValidate(nums));
+        console.log(baseValidate('age', person));
+        console.log(baseValidate('name', person));
+        console.log(baseValidate(alert));
+        console.log(baseValidate(document.getElementById));
+
+        // 以下皆为 isEmpty() 方法为 false 的情况
+        console.log(baseValidate()); // 不传参数，参数默认为 undefined
+        console.log(baseValidate(null));
+        console.log(baseValidate(''));
+        console.log(baseValidate(0));
+        console.log(baseValidate(false));
+        console.log(baseValidate({}));
+        console.log(baseValidate([]));
+        console.log(baseValidate(NaN));
+
+    </script>
+</head>
+<body></body>
+</html>
